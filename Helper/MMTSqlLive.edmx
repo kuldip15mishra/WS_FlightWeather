@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MMTSqlLiveModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MMTSqlLiveModelStoreContainer">
+          <EntitySet Name="tbl_FlightStatusLog" EntityType="MMTSqlLiveModel.Store.tbl_FlightStatusLog" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="tbl_WeatherStatusLog" EntityType="MMTSqlLiveModel.Store.tbl_WeatherStatusLog" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="tbl_FlightStatusLog">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AirlineCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FlightNo" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="FromAirportCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="ToAirportCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="DepartureDate" Type="datetime" />
+          <Property Name="ExpectedDate" Type="datetime" />
+          <Property Name="Status" Type="nvarchar" MaxLength="10" />
+          <Property Name="Delays" Type="int" />
+          <Property Name="Response" Type="nvarchar" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_WeatherStatusLog">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AirPortCode" Type="nvarchar" MaxLength="50" />
+          <Property Name="WeatherStatusDate" Type="datetime" />
+          <Property Name="MorningStatus" Type="nvarchar" MaxLength="1000" />
+          <Property Name="EveningStatus" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CompleteDayStatus" Type="varchar" MaxLength="2000" />
+          <Property Name="LastModifiedDate" Type="datetime" />
+          <Property Name="CreatedDateTime" Type="datetime" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="100" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MMTSqlLiveModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MMTSqlLiveEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_FlightStatusLog" EntityType="MMTSqlLiveModel.tbl_FlightStatusLog" />
+          <EntitySet Name="tbl_WeatherStatusLog" EntityType="MMTSqlLiveModel.tbl_WeatherStatusLog" />
+        </EntityContainer>
+        <EntityType Name="tbl_FlightStatusLog">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AirlineCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FlightNo" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="FromAirportCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ToAirportCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="DepartureDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpectedDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="Delays" Type="Int32" />
+          <Property Name="Response" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_WeatherStatusLog">
+          <Key>
+            <PropertyRef Name="PKID" />
+          </Key>
+          <Property Name="PKID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="AirPortCode" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="WeatherStatusDate" Type="DateTime" Precision="3" />
+          <Property Name="MorningStatus" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="EveningStatus" Type="String" MaxLength="1000" Unicode="true" FixedLength="false" />
+          <Property Name="CompleteDayStatus" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="LastModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreatedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreatedBy" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MMTSqlLiveModelStoreContainer" CdmEntityContainer="MMTSqlLiveEntities">
+          <EntitySetMapping Name="tbl_FlightStatusLog">
+            <EntityTypeMapping TypeName="MMTSqlLiveModel.tbl_FlightStatusLog">
+              <MappingFragment StoreEntitySet="tbl_FlightStatusLog">
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+                <ScalarProperty Name="AirlineCode" ColumnName="AirlineCode" />
+                <ScalarProperty Name="FlightNo" ColumnName="FlightNo" />
+                <ScalarProperty Name="FromAirportCode" ColumnName="FromAirportCode" />
+                <ScalarProperty Name="ToAirportCode" ColumnName="ToAirportCode" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="DepartureDate" ColumnName="DepartureDate" />
+                <ScalarProperty Name="ExpectedDate" ColumnName="ExpectedDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Delays" ColumnName="Delays" />
+                <ScalarProperty Name="Response" ColumnName="Response" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_WeatherStatusLog">
+            <EntityTypeMapping TypeName="MMTSqlLiveModel.tbl_WeatherStatusLog">
+              <MappingFragment StoreEntitySet="tbl_WeatherStatusLog">
+                <ScalarProperty Name="PKID" ColumnName="PKID" />
+                <ScalarProperty Name="AirPortCode" ColumnName="AirPortCode" />
+                <ScalarProperty Name="WeatherStatusDate" ColumnName="WeatherStatusDate" />
+                <ScalarProperty Name="MorningStatus" ColumnName="MorningStatus" />
+                <ScalarProperty Name="EveningStatus" ColumnName="EveningStatus" />
+                <ScalarProperty Name="CompleteDayStatus" ColumnName="CompleteDayStatus" />
+                <ScalarProperty Name="LastModifiedDate" ColumnName="LastModifiedDate" />
+                <ScalarProperty Name="CreatedDateTime" ColumnName="CreatedDateTime" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

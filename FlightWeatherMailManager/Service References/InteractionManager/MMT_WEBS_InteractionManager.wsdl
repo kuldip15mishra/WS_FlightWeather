@@ -1,0 +1,713 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="AddToSMSQueue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="INTERACTION" nillable="true" type="tns:SMSQueue" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SMSQueue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MobileNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MessageID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecipientName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestDateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSReason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsImmediate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueIDType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SenderName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddToSMSQueueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddToSMSQueueResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSMSQueue_v2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="INTERACTION" nillable="true" type="tns:SMSQueue" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSMSQueue_v2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddToSMSQueue_v2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="INTERACTION" nillable="true" type="tns:SMSQueue" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMSResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSMSSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SMSSet" nillable="true" type="tns:SMSSet" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SMSSet">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="SMSQueue" type="tns:SMSQueueV2" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SMSQueueV2">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:SMSQueue">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="UpdateCRM" type="s:boolean" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="AddSMSSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddSMSSetResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSMSSet_v2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SMSSet" nillable="true" type="tns:SMSSet" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddSMSSet_v2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddSMSSet_v2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSSet">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SMSSet" nillable="true" type="tns:SMSSet" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendSMSSetResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMSSetResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSMSQueueString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSMSXML" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSMSQueueStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddToSMSQueueStringResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSMSQueueString_v2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strSMSXML" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToSMSQueueString_v2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AddToSMSQueueString_v2Result" type="tns:ArrayOfSmsError" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfSmsError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="smsError" nillable="true" type="tns:smsError" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="smsError">
+        <s:simpleContent>
+          <s:extension base="s:string">
+            <s:attribute name="strMessageID" type="s:string" />
+          </s:extension>
+        </s:simpleContent>
+      </s:complexType>
+      <s:element name="AddToEmailQueue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="INTERACTION" nillable="true" type="tns:EmailQueue" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EmailQueue">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="From" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RecipientName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailTo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailCC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailBCC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyFile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttachmentFile" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="IsHTMLBody" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyText" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RequestDateTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UniqueIDType" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AddToEmailQueueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddToEmailQueueResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToTransactionLog">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strXMLRequsetString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strXMLResponseString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strRequestType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strRequestSubType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUniqueID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strLogType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToTransactionLogResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddToTransactionLogResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToTransactionLogWithRequestResponseTime">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strXMLRequsetString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strXMLResponseString" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strRequestType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strRequestSubType" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUserID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strUniqueID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="strLogType" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtRequestDatetime" type="s:dateTime" />
+            <s:element minOccurs="1" maxOccurs="1" name="dtResponseDatetime" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToTransactionLogWithRequestResponseTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddToTransactionLogWithRequestResponseTimeResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AddToEmailQueueUpdate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MailMessage" nillable="true" type="tns:EMailMessage" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="EMailMessage">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="From" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="CC" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bcc" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBodyHtml" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsBodyXml" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="BodyFromFile" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="XslUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="XslFoUrl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Body" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyXml">
+            <s:complexType mixed="true">
+              <s:sequence>
+                <s:any />
+              </s:sequence>
+            </s:complexType>
+          </s:element>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Attachment" type="tns:EMailAttachment" />
+          <s:element minOccurs="0" maxOccurs="unbounded" name="AttachmentFile" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="emailType" type="tns:EmailType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EMailAttachment">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContentId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Content" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="EmailType">
+        <s:restriction base="s:string">
+          <s:enumeration value="General" />
+          <s:enumeration value="ForgotPassword" />
+          <s:enumeration value="Eticket" />
+          <s:enumeration value="UserRegistration" />
+          <s:enumeration value="MTR" />
+          <s:enumeration value="HotelVoucher" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="AddToEmailQueueUpdateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AddToEmailQueueUpdateResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MailMessage" nillable="true" type="tns:EMailMessage" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendEmailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendEmailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="AddToSMSQueueSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueue" />
+  </wsdl:message>
+  <wsdl:message name="AddToSMSQueueSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueueResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddToSMSQueue_v2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueue_v2" />
+  </wsdl:message>
+  <wsdl:message name="AddToSMSQueue_v2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueue_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSMSSetSoapIn">
+    <wsdl:part name="parameters" element="tns:AddSMSSet" />
+  </wsdl:message>
+  <wsdl:message name="AddSMSSetSoapOut">
+    <wsdl:part name="parameters" element="tns:AddSMSSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddSMSSet_v2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddSMSSet_v2" />
+  </wsdl:message>
+  <wsdl:message name="AddSMSSet_v2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddSMSSet_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSetSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMSSet" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSetSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSSetResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddToSMSQueueStringSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueueString" />
+  </wsdl:message>
+  <wsdl:message name="AddToSMSQueueStringSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueueStringResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddToSMSQueueString_v2SoapIn">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueueString_v2" />
+  </wsdl:message>
+  <wsdl:message name="AddToSMSQueueString_v2SoapOut">
+    <wsdl:part name="parameters" element="tns:AddToSMSQueueString_v2Response" />
+  </wsdl:message>
+  <wsdl:message name="AddToEmailQueueSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToEmailQueue" />
+  </wsdl:message>
+  <wsdl:message name="AddToEmailQueueSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToEmailQueueResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddToTransactionLogSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToTransactionLog" />
+  </wsdl:message>
+  <wsdl:message name="AddToTransactionLogSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToTransactionLogResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddToTransactionLogWithRequestResponseTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToTransactionLogWithRequestResponseTime" />
+  </wsdl:message>
+  <wsdl:message name="AddToTransactionLogWithRequestResponseTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToTransactionLogWithRequestResponseTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="AddToEmailQueueUpdateSoapIn">
+    <wsdl:part name="parameters" element="tns:AddToEmailQueueUpdate" />
+  </wsdl:message>
+  <wsdl:message name="AddToEmailQueueUpdateSoapOut">
+    <wsdl:part name="parameters" element="tns:AddToEmailQueueUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendEmail" />
+  </wsdl:message>
+  <wsdl:message name="SendEmailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendEmailResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MMT_WEBS_InteractionManagerSoap">
+    <wsdl:operation name="AddToSMSQueue">
+      <wsdl:input message="tns:AddToSMSQueueSoapIn" />
+      <wsdl:output message="tns:AddToSMSQueueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueue_v2">
+      <wsdl:input message="tns:AddToSMSQueue_v2SoapIn" />
+      <wsdl:output message="tns:AddToSMSQueue_v2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMSSoapIn" />
+      <wsdl:output message="tns:SendSMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSMSSet">
+      <wsdl:input message="tns:AddSMSSetSoapIn" />
+      <wsdl:output message="tns:AddSMSSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSMSSet_v2">
+      <wsdl:input message="tns:AddSMSSet_v2SoapIn" />
+      <wsdl:output message="tns:AddSMSSet_v2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSet">
+      <wsdl:input message="tns:SendSMSSetSoapIn" />
+      <wsdl:output message="tns:SendSMSSetSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueueString">
+      <wsdl:input message="tns:AddToSMSQueueStringSoapIn" />
+      <wsdl:output message="tns:AddToSMSQueueStringSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueueString_v2">
+      <wsdl:input message="tns:AddToSMSQueueString_v2SoapIn" />
+      <wsdl:output message="tns:AddToSMSQueueString_v2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToEmailQueue">
+      <wsdl:input message="tns:AddToEmailQueueSoapIn" />
+      <wsdl:output message="tns:AddToEmailQueueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToTransactionLog">
+      <wsdl:input message="tns:AddToTransactionLogSoapIn" />
+      <wsdl:output message="tns:AddToTransactionLogSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToTransactionLogWithRequestResponseTime">
+      <wsdl:input message="tns:AddToTransactionLogWithRequestResponseTimeSoapIn" />
+      <wsdl:output message="tns:AddToTransactionLogWithRequestResponseTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AddToEmailQueueUpdate">
+      <wsdl:input message="tns:AddToEmailQueueUpdateSoapIn" />
+      <wsdl:output message="tns:AddToEmailQueueUpdateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <wsdl:input message="tns:SendEmailSoapIn" />
+      <wsdl:output message="tns:SendEmailSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MMT_WEBS_InteractionManagerSoap" type="tns:MMT_WEBS_InteractionManagerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddToSMSQueue">
+      <soap:operation soapAction="http://tempuri.org/AddToSMSQueue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueue_v2">
+      <soap:operation soapAction="http://tempuri.org/AddToSMSQueue_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSMSSet">
+      <soap:operation soapAction="http://tempuri.org/AddSMSSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSMSSet_v2">
+      <soap:operation soapAction="http://tempuri.org/AddSMSSet_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSet">
+      <soap:operation soapAction="http://tempuri.org/SendSMSSet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueueString">
+      <soap:operation soapAction="http://tempuri.org/AddToSMSQueueString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueueString_v2">
+      <soap:operation soapAction="http://tempuri.org/AddToSMSQueueString_v2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToEmailQueue">
+      <soap:operation soapAction="http://tempuri.org/AddToEmailQueue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToTransactionLog">
+      <soap:operation soapAction="http://tempuri.org/AddToTransactionLog" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToTransactionLogWithRequestResponseTime">
+      <soap:operation soapAction="http://tempuri.org/AddToTransactionLogWithRequestResponseTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToEmailQueueUpdate">
+      <soap:operation soapAction="http://tempuri.org/AddToEmailQueueUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap:operation soapAction="http://tempuri.org/SendEmail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MMT_WEBS_InteractionManagerSoap12" type="tns:MMT_WEBS_InteractionManagerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="AddToSMSQueue">
+      <soap12:operation soapAction="http://tempuri.org/AddToSMSQueue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueue_v2">
+      <soap12:operation soapAction="http://tempuri.org/AddToSMSQueue_v2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMS">
+      <soap12:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSMSSet">
+      <soap12:operation soapAction="http://tempuri.org/AddSMSSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSMSSet_v2">
+      <soap12:operation soapAction="http://tempuri.org/AddSMSSet_v2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendSMSSet">
+      <soap12:operation soapAction="http://tempuri.org/SendSMSSet" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueueString">
+      <soap12:operation soapAction="http://tempuri.org/AddToSMSQueueString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToSMSQueueString_v2">
+      <soap12:operation soapAction="http://tempuri.org/AddToSMSQueueString_v2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToEmailQueue">
+      <soap12:operation soapAction="http://tempuri.org/AddToEmailQueue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToTransactionLog">
+      <soap12:operation soapAction="http://tempuri.org/AddToTransactionLog" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToTransactionLogWithRequestResponseTime">
+      <soap12:operation soapAction="http://tempuri.org/AddToTransactionLogWithRequestResponseTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddToEmailQueueUpdate">
+      <soap12:operation soapAction="http://tempuri.org/AddToEmailQueueUpdate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendEmail">
+      <soap12:operation soapAction="http://tempuri.org/SendEmail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MMT_WEBS_InteractionManager">
+    <wsdl:port name="MMT_WEBS_InteractionManagerSoap" binding="tns:MMT_WEBS_InteractionManagerSoap">
+      <soap:address location="http://navwebservices.mmt.com/MMT_WEBS_InteractionManager/MMT_WEBS_InteractionManager.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MMT_WEBS_InteractionManagerSoap12" binding="tns:MMT_WEBS_InteractionManagerSoap12">
+      <soap12:address location="http://navwebservices.mmt.com/MMT_WEBS_InteractionManager/MMT_WEBS_InteractionManager.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

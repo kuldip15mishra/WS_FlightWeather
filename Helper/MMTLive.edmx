@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MMTLiveModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="MMTLiveModelStoreContainer">
+          <EntitySet Name="SMS Queue" EntityType="MMTLiveModel.Store.SMS Queue" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="SMS Queue">
+          <Key>
+            <PropertyRef Name="Message ID" />
+          </Key>
+          <Property Name="timestamp" Type="timestamp" Nullable="false" StoreGeneratedPattern="Computed" />
+          <Property Name="Message ID" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Request Date Time" Type="datetime" Nullable="false" />
+          <Property Name="Sender Name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Mobile No_" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Message Text" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="Status" Type="tinyint" Nullable="false" />
+          <Property Name="Document No_" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Trigger Point" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Schedule SMS" Type="tinyint" Nullable="false" />
+          <Property Name="MSG Type" Type="int" Nullable="false" />
+          <Property Name="LOBID" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="BodyDocument" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="AttachmentDocument" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="From" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="To" Type="varchar" Nullable="false" MaxLength="250" />
+          <Property Name="CC" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="BCC" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Subject" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="SendMail" Type="int" Nullable="false" />
+          <Property Name="Source" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="RefrenceType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Acknowledgement No_" Type="varchar" Nullable="false" MaxLength="40" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MMTLiveModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MMTLiveEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="SMS_Queues" EntityType="MMTLiveModel.SMS_Queue" />
+        </EntityContainer>
+        <EntityType Name="SMS_Queue">
+          <Key>
+            <PropertyRef Name="Message_ID" />
+          </Key>
+          <Property Name="timestamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" p1:StoreGeneratedPattern="Computed" />
+          <Property Name="Message_ID" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Request_Date_Time" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Sender_Name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Mobile_No_" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Message_Text" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="Status" Type="Byte" Nullable="false" />
+          <Property Name="Document_No_" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Trigger_Point" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Schedule_SMS" Type="Byte" Nullable="false" />
+          <Property Name="MSG_Type" Type="Int32" Nullable="false" />
+          <Property Name="LOBID" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="BodyDocument" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="AttachmentDocument" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="From" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="To" Type="String" Nullable="false" MaxLength="250" Unicode="false" FixedLength="false" />
+          <Property Name="CC" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="BCC" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="SendMail" Type="Int32" Nullable="false" />
+          <Property Name="Source" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="RefrenceType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Acknowledgement_No_" Type="String" Nullable="false" MaxLength="40" Unicode="false" FixedLength="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MMTLiveModelStoreContainer" CdmEntityContainer="MMTLiveEntities">
+          <EntitySetMapping Name="SMS_Queues">
+            <EntityTypeMapping TypeName="MMTLiveModel.SMS_Queue">
+              <MappingFragment StoreEntitySet="SMS Queue">
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="Message_ID" ColumnName="Message ID" />
+                <ScalarProperty Name="Request_Date_Time" ColumnName="Request Date Time" />
+                <ScalarProperty Name="Sender_Name" ColumnName="Sender Name" />
+                <ScalarProperty Name="Mobile_No_" ColumnName="Mobile No_" />
+                <ScalarProperty Name="Message_Text" ColumnName="Message Text" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Document_No_" ColumnName="Document No_" />
+                <ScalarProperty Name="Trigger_Point" ColumnName="Trigger Point" />
+                <ScalarProperty Name="Schedule_SMS" ColumnName="Schedule SMS" />
+                <ScalarProperty Name="MSG_Type" ColumnName="MSG Type" />
+                <ScalarProperty Name="LOBID" ColumnName="LOBID" />
+                <ScalarProperty Name="BodyDocument" ColumnName="BodyDocument" />
+                <ScalarProperty Name="AttachmentDocument" ColumnName="AttachmentDocument" />
+                <ScalarProperty Name="From" ColumnName="From" />
+                <ScalarProperty Name="To" ColumnName="To" />
+                <ScalarProperty Name="CC" ColumnName="CC" />
+                <ScalarProperty Name="BCC" ColumnName="BCC" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="SendMail" ColumnName="SendMail" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+                <ScalarProperty Name="RefrenceType" ColumnName="RefrenceType" />
+                <ScalarProperty Name="Acknowledgement_No_" ColumnName="Acknowledgement No_" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

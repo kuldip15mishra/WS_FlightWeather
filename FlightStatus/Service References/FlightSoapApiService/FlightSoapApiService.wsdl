@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:tns="http://v2.api_internal.flighthistory.cache.conducivetech.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" name="FlightSoapApiService" targetNamespace="http://v2.api_internal.flighthistory.cache.conducivetech.com/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://api.flightstats.com:443/flex/flightstatus/soap/v2/flightService?xsd=1" namespace="http://v2.api_internal.flighthistory.cache.conducivetech.com/" />
+    </xsd:schema>
+  </types>
+  <message name="flightTrack_fhid">
+    <part name="parameters" element="tns:flightTrack_fhid" />
+  </message>
+  <message name="flightTrack_fhidResponse">
+    <part name="parameters" element="tns:flightTrack_fhidResponse" />
+  </message>
+  <message name="APIException">
+    <part name="fault" element="tns:APIException" />
+  </message>
+  <message name="flightTrack_arr">
+    <part name="parameters" element="tns:flightTrack_arr" />
+  </message>
+  <message name="flightTrack_arrResponse">
+    <part name="parameters" element="tns:flightTrack_arrResponse" />
+  </message>
+  <message name="flightTrack_dep">
+    <part name="parameters" element="tns:flightTrack_dep" />
+  </message>
+  <message name="flightTrack_depResponse">
+    <part name="parameters" element="tns:flightTrack_depResponse" />
+  </message>
+  <message name="flightStatus_fhid">
+    <part name="parameters" element="tns:flightStatus_fhid" />
+  </message>
+  <message name="flightStatus_fhidResponse">
+    <part name="parameters" element="tns:flightStatus_fhidResponse" />
+  </message>
+  <message name="flightStatus_dep">
+    <part name="parameters" element="tns:flightStatus_dep" />
+  </message>
+  <message name="flightStatus_depResponse">
+    <part name="parameters" element="tns:flightStatus_depResponse" />
+  </message>
+  <message name="flightStatus_arr">
+    <part name="parameters" element="tns:flightStatus_arr" />
+  </message>
+  <message name="flightStatus_arrResponse">
+    <part name="parameters" element="tns:flightStatus_arrResponse" />
+  </message>
+  <portType name="flightService">
+    <operation name="flightTrack_fhid">
+      <input wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_fhidRequest" message="tns:flightTrack_fhid" />
+      <output wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_fhidResponse" message="tns:flightTrack_fhidResponse" />
+      <fault wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_fhid/Fault/APIException" name="APIException" message="tns:APIException" />
+    </operation>
+    <operation name="flightTrack_arr">
+      <input wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_arrRequest" message="tns:flightTrack_arr" />
+      <output wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_arrResponse" message="tns:flightTrack_arrResponse" />
+      <fault wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_arr/Fault/APIException" name="APIException" message="tns:APIException" />
+    </operation>
+    <operation name="flightTrack_dep">
+      <input wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_depRequest" message="tns:flightTrack_dep" />
+      <output wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_depResponse" message="tns:flightTrack_depResponse" />
+      <fault wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightTrack_dep/Fault/APIException" name="APIException" message="tns:APIException" />
+    </operation>
+    <operation name="flightStatus_fhid">
+      <input wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_fhidRequest" message="tns:flightStatus_fhid" />
+      <output wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_fhidResponse" message="tns:flightStatus_fhidResponse" />
+      <fault wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_fhid/Fault/APIException" name="APIException" message="tns:APIException" />
+    </operation>
+    <operation name="flightStatus_dep">
+      <input wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_depRequest" message="tns:flightStatus_dep" />
+      <output wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_depResponse" message="tns:flightStatus_depResponse" />
+      <fault wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_dep/Fault/APIException" name="APIException" message="tns:APIException" />
+    </operation>
+    <operation name="flightStatus_arr">
+      <input wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_arrRequest" message="tns:flightStatus_arr" />
+      <output wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_arrResponse" message="tns:flightStatus_arrResponse" />
+      <fault wsam:Action="http://v2.api_internal.flighthistory.cache.conducivetech.com/flightService/flightStatus_arr/Fault/APIException" name="APIException" message="tns:APIException" />
+    </operation>
+  </portType>
+  <binding name="flightServicePortBinding" type="tns:flightService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="flightTrack_fhid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="APIException">
+        <soap:fault use="literal" name="APIException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="flightTrack_arr">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="APIException">
+        <soap:fault use="literal" name="APIException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="flightTrack_dep">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="APIException">
+        <soap:fault use="literal" name="APIException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="flightStatus_fhid">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="APIException">
+        <soap:fault use="literal" name="APIException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="flightStatus_dep">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="APIException">
+        <soap:fault use="literal" name="APIException" namespace="" />
+      </fault>
+    </operation>
+    <operation name="flightStatus_arr">
+      <soap:operation soapAction="" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+      <fault name="APIException">
+        <soap:fault use="literal" name="APIException" namespace="" />
+      </fault>
+    </operation>
+  </binding>
+  <service name="FlightSoapApiService">
+    <port name="flightServicePort" binding="tns:flightServicePortBinding">
+      <soap:address location="https://api.flightstats.com:443/flex/flightstatus/soap/v2/flightService" />
+    </port>
+  </service>
+</definitions>

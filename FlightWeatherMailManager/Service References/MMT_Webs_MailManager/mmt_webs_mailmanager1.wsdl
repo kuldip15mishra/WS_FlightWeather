@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="SendSMS">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SMSMessage" nillable="true" type="tns:SMSRequestObj" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSMSErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SMSRequestObj">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="AcknowledgementNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PNRNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefrenceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSTo" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSTrigger" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SMSFrom" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOB" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefrenceNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DBName" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendSMSResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendSMSResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strSMSErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SendMail">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="MailMessage" nillable="true" type="tns:RequestObj" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMailBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="RequestObj">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AcknowledgementNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PNRNo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefrenceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOBID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefrenceNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyDocument" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttachmentDocument" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="From" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BCC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendMail" type="tns:SendMailEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="AdditionalTemplateParameters" type="tns:ArrayOfTemplateParam" />
+          <s:element minOccurs="1" maxOccurs="1" name="DBName" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="SendMailEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="NoMail" />
+          <s:enumeration value="AsHTML" />
+          <s:enumeration value="AsPDF" />
+          <s:enumeration value="AsBOTH" />
+          <s:enumeration value="AsMailOnly" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfTemplateParam">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="TemplateParam" nillable="true" type="tns:TemplateParam" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="TemplateParam">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Key" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Value" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SendMailResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="SendMailResult" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" name="strMailBody" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Attachment" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="strErrorMessage" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateTemplate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateTemplateobjRequest" type="tns:GenerateTemplateRequestObj" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GenerateTemplateRequestObj">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefrenceType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOBID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RefrenceNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BodyDocument" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AttachmentDocument" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="From" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="To" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BCC" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Subject" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Source" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="SendMail" type="tns:GenerateTemplateSendMailEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="DBName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InputXML" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="GenerateTemplateSendMailEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="NoMail" />
+          <s:enumeration value="AsHTML" />
+          <s:enumeration value="AsPDF" />
+          <s:enumeration value="AsBOTH" />
+          <s:enumeration value="AsMailOnly" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GenerateTemplateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateTemplateResult" type="tns:GenerateTemplateResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GenerateTemplateResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="SendMailResult" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="strMailBody" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PDFBytes" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorResponse" type="tns:ErrorResponse" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ErrorResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="SendSMSSoapIn">
+    <wsdl:part name="parameters" element="tns:SendSMS" />
+  </wsdl:message>
+  <wsdl:message name="SendSMSSoapOut">
+    <wsdl:part name="parameters" element="tns:SendSMSResponse" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapIn">
+    <wsdl:part name="parameters" element="tns:SendMail" />
+  </wsdl:message>
+  <wsdl:message name="SendMailSoapOut">
+    <wsdl:part name="parameters" element="tns:SendMailResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateTemplateSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateTemplate" />
+  </wsdl:message>
+  <wsdl:message name="GenerateTemplateSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateTemplateResponse" />
+  </wsdl:message>
+  <wsdl:portType name="MMT_WEBS_MailManagerSoap">
+    <wsdl:operation name="SendSMS">
+      <wsdl:input message="tns:SendSMSSoapIn" />
+      <wsdl:output message="tns:SendSMSSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <wsdl:input message="tns:SendMailSoapIn" />
+      <wsdl:output message="tns:SendMailSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTemplate">
+      <wsdl:input message="tns:GenerateTemplateSoapIn" />
+      <wsdl:output message="tns:GenerateTemplateSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MMT_WEBS_MailManagerSoap" type="tns:MMT_WEBS_MailManagerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendSMS">
+      <soap:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTemplate">
+      <soap:operation soapAction="http://tempuri.org/GenerateTemplate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="MMT_WEBS_MailManagerSoap12" type="tns:MMT_WEBS_MailManagerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SendSMS">
+      <soap12:operation soapAction="http://tempuri.org/SendSMS" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SendMail">
+      <soap12:operation soapAction="http://tempuri.org/SendMail" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateTemplate">
+      <soap12:operation soapAction="http://tempuri.org/GenerateTemplate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MMT_WEBS_MailManager">
+    <wsdl:port name="MMT_WEBS_MailManagerSoap" binding="tns:MMT_WEBS_MailManagerSoap">
+      <soap:address location="http://navwebservices.mmt.com/mailmanager/mmt_webs_mailmanager.asmx" />
+    </wsdl:port>
+    <wsdl:port name="MMT_WEBS_MailManagerSoap12" binding="tns:MMT_WEBS_MailManagerSoap12">
+      <soap12:address location="http://navwebservices.mmt.com/mailmanager/mmt_webs_mailmanager.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

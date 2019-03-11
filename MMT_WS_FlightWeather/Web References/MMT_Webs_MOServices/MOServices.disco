@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<discovery xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/disco/">
+  <contractRef ref="http://navwebservices.mmt.com/MMT_WEBS_MOServices/MOServices.asmx?wsdl" docRef="http://navwebservices.mmt.com/MMT_WEBS_MOServices/MOServices.asmx" xmlns="http://schemas.xmlsoap.org/disco/scl/" />
+  <soap address="http://navwebservices.mmt.com/MMT_WEBS_MOServices/MOServices.asmx" xmlns:q1="http://temp.org/" binding="q1:MOServicesSoap" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+  <soap address="http://navwebservices.mmt.com/MMT_WEBS_MOServices/MOServices.asmx" xmlns:q2="http://temp.org/" binding="q2:MOServicesSoap12" xmlns="http://schemas.xmlsoap.org/disco/soap/" />
+</discovery>

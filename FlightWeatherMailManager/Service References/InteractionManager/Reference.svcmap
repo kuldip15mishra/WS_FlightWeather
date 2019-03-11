@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cf0f5e14-8cdf-4a76-8fdf-a5b37967ae17" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://navwebservices.mmt.com/MMT_WEBS_InteractionManager/MMT_WEBS_InteractionManager.asmx" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="MMT_WEBS_InteractionManager.wsdl" MetadataType="Wsdl" ID="369cfbfc-d752-4eed-9ae9-042aa7b07b6f" SourceId="1" SourceUrl="http://navwebservices.mmt.com/MMT_WEBS_InteractionManager/MMT_WEBS_InteractionManager.asmx?wsdl" />
+    <MetadataFile FileName="MMT_WEBS_InteractionManager.disco" MetadataType="Disco" ID="af2ff602-2329-4316-a21a-d004e459706d" SourceId="1" SourceUrl="http://navwebservices.mmt.com/MMT_WEBS_InteractionManager/MMT_WEBS_InteractionManager.asmx?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

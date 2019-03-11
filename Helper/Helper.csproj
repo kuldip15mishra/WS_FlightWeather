@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{022326D8-6211-4ED7-85E7-8B08FAB3C313}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Helper</RootNamespace>
+    <AssemblyName>Helper</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\commondlls-Core\ThirdPartyDLLs\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Library.ErrorLog">
+      <HintPath>..\..\commondlls-Core\DLLs\Library.ErrorLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CommonCache.cs" />
+    <Compile Include="MMTLive.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTLive.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMTLive.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTLive.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMTLive.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTLive.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MMTSqlLive.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTSqlLive.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMTSqlLive.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTSqlLive.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MMTSqlLive.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MMTSqlLive.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SMS_Queue.cs">
+      <DependentUpon>MMTLive.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StaticHelperValues.cs" />
+    <Compile Include="tbl_FlightStatusLog.cs">
+      <DependentUpon>MMTSqlLive.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tbl_WeatherStatusLog.cs">
+      <DependentUpon>MMTSqlLive.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EntityDeploy Include="MMTLive.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MMTLive.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MMTLive.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MMTLive.edmx</DependentUpon>
+      <LastGenOutput>MMTLive.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MMTLive.edmx.diagram">
+      <DependentUpon>MMTLive.edmx</DependentUpon>
+    </None>
+    <None Include="MMTLive.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MMTLive.edmx</DependentUpon>
+      <LastGenOutput>MMTLive.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="MMTSqlLive.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MMTSqlLive.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MMTSqlLive.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MMTSqlLive.edmx</DependentUpon>
+      <LastGenOutput>MMTSqlLive.Context.cs</LastGenOutput>
+    </None>
+    <None Include="MMTSqlLive.edmx.diagram">
+      <DependentUpon>MMTSqlLive.edmx</DependentUpon>
+    </None>
+    <None Include="MMTSqlLive.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MMTSqlLive.edmx</DependentUpon>
+      <LastGenOutput>MMTSqlLive.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
